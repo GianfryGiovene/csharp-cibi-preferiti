@@ -14,16 +14,16 @@ Attenzione: gestire anche il caso se aveste una classifica con un numero di elem
 elementi in centro alla vostra classifica.  Buon pomeriggio e buon lavoro!
 */
 
-string[] cibiPreferiti = { "Carbonara", "Cotoletta", "Pizza", "Arrosto", "Pasta al forno", "patate"};
+string[] cibiPreferiti = { "Carbonara", "Cotoletta", "Pizza", "Arrosto", "Pasta al forno" };
 
 //La lunghezza della classifica
 Console.WriteLine("Lunghezza lista cibi preferiti:\n" + cibiPreferiti.Length);
 
 // La vostra classifica (dunque stampare l’intero array in ordine indicando la posizione in classifica)
 Console.WriteLine("Lista cibi preferiti");
-for(int i = 0; i < cibiPreferiti.Length; i++)
+for (int i = 0; i < cibiPreferiti.Length; i++)
 {
-    Console.WriteLine((i+1) + "° " + cibiPreferiti[i]);
+    Console.WriteLine((i + 1) + "° " + cibiPreferiti[i]);
 }
 
 //Il vostro cibo top (prima posizione della classifica)
@@ -41,7 +41,7 @@ elementi in centro alla vostra classifica.
 */
 
 float diviso = cibiPreferiti.Length / 2;
-if(cibiPreferiti.Length % 2 != 0)
+if (cibiPreferiti.Length % 2 != 0)
 {
     Console.WriteLine("cibo di mezzo se lunghezza dispari " + cibiPreferiti[(int)Math.Ceiling(diviso)]);
 }
@@ -49,5 +49,42 @@ else
 {
     Console.WriteLine("primo cibo di mezzo se lunghezza pari " + cibiPreferiti[(cibiPreferiti.Length / 2) - 1]);
     Console.WriteLine("secondo cibo di mezzo se lunghezza pari " + cibiPreferiti[cibiPreferiti.Length / 2]);
-    
+
 }
+
+/*
+ chiedere all'utente qual'è il suo cibo preferito,
+generare un numero random da 0 a lunghezza dell'array cibi preferiti,
+per simulare che anche il pc scelga un cibo preferito. Quando stampo la lista cibi preferiti bisogna, 
+nella riga in cui esce il cibo preferito (questo è il tuo cibo preferito quando è dell'utente) mentre (questo è il mio cibo preferito quando è del pc,
+quando utente e pc hanno lo stesso cibo preferito compare la scritta "abbiamo gli stessi gusti"
+se l'utente nn inserisce un cibo preferito contenuto nell'array richiederlo fino a che nn è contenuto
+ */
+Random rnd = new Random();
+
+Console.WriteLine("Inserire Il cibo preferigvto");
+int numeroRandom = rnd.Next(1, cibiPreferiti.Length);
+string ciboUtente = Console.ReadLine();
+
+
+for (int i = 0; i < cibiPreferiti.Length; i++)
+{
+    if (ciboUtente == cibiPreferiti[i] && cibiPreferiti[numeroRandom] == cibiPreferiti[i])
+    {
+        Console.WriteLine((i + 1) + "° " + cibiPreferiti[i] + " ---> Avete gli stessi gusti");
+    }
+    else if(ciboUtente == cibiPreferiti[i])
+    {
+        Console.WriteLine((i + 1) + "° " + cibiPreferiti[i] + " ---> Questo è il tuo cibo preferito");
+
+    }else if (cibiPreferiti[i] == cibiPreferiti[numeroRandom]){
+
+        Console.WriteLine((i + 1) + "° " + cibiPreferiti[i] + " ---> Questo è il cibo preferito del pc");
+    }
+    else
+    {
+        Console.WriteLine((i + 1) + "° " + cibiPreferiti[i]);
+    }
+}
+
+
