@@ -63,8 +63,23 @@ se l'utente nn inserisce un cibo preferito contenuto nell'array richiederlo fino
 Random rnd = new Random();
 
 Console.WriteLine("Inserire Il cibo preferigvto");
+
 int numeroRandom = rnd.Next(1, cibiPreferiti.Length);
-string ciboUtente = Console.ReadLine();
+string ciboUtente;
+bool validator = true;
+do
+{
+    ciboUtente = Console.ReadLine();
+    for (int i = 0; i < cibiPreferiti.Length; i++)
+    {
+        if (ciboUtente == cibiPreferiti[i])
+        {
+            validator = false;
+        }
+    }
+} while (validator);
+
+
 
 
 for (int i = 0; i < cibiPreferiti.Length; i++)
